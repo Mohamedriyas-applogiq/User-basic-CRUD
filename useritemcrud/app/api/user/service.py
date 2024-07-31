@@ -21,6 +21,10 @@ def get_users(db:Session, skip: int = 0, limit: int = 100):
     return db.query(User).offset(skip).limit(limit).all()
 
 
+def get_users_by_email(db:Session,user_email:str):
+    return db.query(User).filter(User.email==user_email).first()
+
+
 def update_user(db:Session, user_id: int, user_update:UserUpdate):
     db_user = db.query(User).filter(User.id == user_id).first()
     if db_user is None:

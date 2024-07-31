@@ -21,6 +21,14 @@ def get_user_controller(db,user_id):
         raise HTTPException(status_code=404, detail="User not found")
     return data
 
+def get_user_by_email_controller(db,user):
+    data=get_user_controller(db,user_id)
+    if not data:
+        raise HTTPException(status_code=404, detail="User not found")
+    return data
+
+
+
 def update_user_controller(db,user_id, user_update):
     data=update_user(db,user_id,user_update)
     if not data:

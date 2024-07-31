@@ -17,6 +17,10 @@ def read_users(db: Session = Depends(get_db),skip: int = 0, limit: int = 100):
 def  read_user(user_id:int,db: Session = Depends(get_db)):
      return get_user_controller(db,user_id=user_id)
 
+@router.get("/users/email")
+def get_user_by_email_endpoint(user:UserCreate,db:Session=Depends(get_db)):
+    return get_user_by_email_controller(db,user)
+
 @router.put("/users/{user_id}", response_model=UserResponse)
 def update_user(user_id:int, user_update: UserUpdate,db: Session = Depends(get_db)):
     return update_user_controller(db,user_id=user_id, user_update=user_update)
