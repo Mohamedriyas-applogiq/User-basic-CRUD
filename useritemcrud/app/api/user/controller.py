@@ -22,7 +22,7 @@ def get_user_controller(db,user_id):
     return data
 
 def get_user_by_email_controller(db,user):
-    data=get_user_controller(db,user_id)
+    data=get_user_controller(db,user)
     if not data:
         raise HTTPException(status_code=404, detail="User not found")
     return data
