@@ -6,11 +6,11 @@ from app.api.user.controller import *
 
 
 @router.post("/users/", response_model=UserResponse)
-def create_user_endpoint(user: UserCreate, db: Session = Depends(get_db)):
+def create_user_router(user: UserCreate, db: Session = Depends(get_db)):
     return create_user_controller(db,user)
 
 @router.get("/users/", response_model=list[UserResponse])
-def read_users(db: Session = Depends(get_db),skip: int = 0, limit: int = 100):
+def read_users_router(db: Session = Depends(get_db),skip: int = 0, limit: int = 100):
     return  get_users_controller(db, skip=skip, limit=limit)
 
 @router.get("/users/{user_id}", response_model=UserResponse)
